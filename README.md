@@ -1,10 +1,6 @@
 # Terraform - Writing Reusable Code
 
-This site includes the slides and labs for the Terraform - Writing Reusable Code class.
-
-
-## Course Content   
-[Slides](https://www.dropbox.com/s/5m1sh0ps3wfaejo/TF-Writing_Resuable_Code.pdf?dl=0)   
+This site includes the labs for the Terraform - Writing Reusable Code class.
 
 ## Labs
 Lab 1: [Setup environment](labs/lab-setup/)   
