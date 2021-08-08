@@ -1,4 +1,4 @@
-# Terraform Lab 8
+# Terraform Lab 4
 
 ## Overview
 In this lab, you will create a module to manage AWS S3 buckets used to host static websites.
@@ -32,12 +32,27 @@ You also want to make sure and add the following to your ignore list. If you are
 
 ## Create a module 
 
-This lab continues with the same configuration as the last one. 
+### Create Terraform configuration
 
-Enter the directory
+Create working directory
+```sh
+mkdir tf-lab4
+cd $_
+```
+Clone the GitHub repository.
+```sh
+git clone https://github.com/jruels/learn-terraform-modules.git
+```
+
+Enter the directory.
+```sh
+cd learn-terraform-modules
+```
+
+Check out the `ec2-instances` tag into a local branch.
 
 ```sh
-cd tf-lab5/learn-terraform-modules
+git checkout tags/ec2-instances -b ec2-instances
 ```
 
 Ensure that Terraform has downloaded all the necessary providers and modules by initializing it.

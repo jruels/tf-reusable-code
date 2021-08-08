@@ -1,4 +1,4 @@
-# Terraform Lab 5
+# Terraform Lab 3
 
 ## Overview
 In this lab you will create some AWS resources using the console, and then import them into Terraform management. 
@@ -19,15 +19,17 @@ Create three EC2 instances in the AWS Console.
 7. Click `Review and Launch`
 8. Click `Launch` 
 
+If prompted to select an SSH key, just agree and continue. We will not be connecting to these servers.
+
 ## Create Terraform configuration 
 While waiting for the instances to launch create a new working directory and configuration file. 
 ```sh
-mkdir tf-lab4
+mkdir tf-lab3
 ```
 Inside the new directory create a `main.tf` file and add a resource with the following attributes:
 - type: `aws_instance`
 - name: `tf-example-import`
-- ami: `ami-0742b4e673072066f`
+- ami: AMI of newly created instances (Find this in the AWS Console) e.g. `ami-0742b4e673072066f`
 - instance_type: The type specified when creating the instance.
 - count: `3`
 - tags: `Name: TF-example-import`, `role: terraform`
