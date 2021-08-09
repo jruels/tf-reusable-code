@@ -1,4 +1,4 @@
-# Terraform Lab 3
+# Terraform Lab 2
 
 ## Overview 
 In this lab, you will use Terraform to deploy a web application on AWS. The infrastructure will include a VPC, load balancer and EC2 instances. 
