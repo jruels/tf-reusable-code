@@ -126,24 +126,10 @@ Define the following variables in `variables.tf` inside the `modules/aws-s3-stat
 - description: `Name of S3 bucket. Must be unique`
 - type: `string`
 
-name: `tags`
-description: `Tags to set on bucket.`
-default: `{}`
+- name: `tags`
+- description: `Tags to set on bucket.`
+- default: `{}`
 
-```hcl
-# Input variable definitions
-
-variable "bucket_name" {
-  description = "Name of the s3 bucket. Must be unique."
-  type        = string
-}
-
-variable "tags" {
-  description = "Tags to set on the bucket."
-  type        = map(string)
-  default     = {}
-}
-```
 
 When using a module, variables are set by passing arguments to the module in your configuration. You will set some of these variables when calling this module from your root module's `main.tf`.
 
@@ -200,16 +186,6 @@ Add these values as outputs to your root module by adding the following to `outp
 ```hcl
 # Output definitions
 
-output "vpc_public_subnets" {
-  description = "IDs of the VPC's public subnets"
-  value       = module.vpc.public_subnets
-}
-
-output "ec2_instance_public_ips" {
-  description = "Public IP addresses of EC2 instances"
-  value       = module.ec2_instances.public_ip
-}
-
 output "website_bucket_arn" {
   description = "ARN of the bucket"
   value       = module.website_s3_bucket.arn
@@ -234,6 +210,10 @@ terraform get
 ```
 
 Now that your new module is installed and configured, run `terraform apply` to provision your bucket.
+
+
+## Bonus
+Use the `aws s3` command to copy an index.html file to your bucket, and load it in a browser. 
 
 ## Congrats! 
 You have now configured and used your own module to create a static website. 
