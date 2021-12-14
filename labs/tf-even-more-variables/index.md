@@ -3,7 +3,7 @@
 ## Overview 
 Terraform supports several variable types including bool, string and numbers.
 
-The following steps continue where the previous lab left off. The below changes should be applied in the `tf-lab3` directory.
+The following steps continue with the codebase in from lab 3. The below changes should be applied in the `tf-lab3` directory.
 
 ## VPN gateway support
 
