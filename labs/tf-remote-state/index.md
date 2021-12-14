@@ -1,4 +1,4 @@
-# Terraform Lab 4
+# Terraform Lab 7
 
 ## Overview 
 In this lab you will create an S3 bucket and migrate the Terraform state to a remote backend. 

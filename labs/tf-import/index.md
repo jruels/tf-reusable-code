@@ -1,4 +1,4 @@
-# Terraform Lab 3
+# Terraform Lab 4
 
 ## Overview
 In this lab you will create some AWS resources using the console, and then import them into Terraform management. 
@@ -24,7 +24,7 @@ If prompted to select an SSH key, just agree and continue. We will not be connec
 ## Create Terraform configuration 
 While waiting for the instances to launch create a new working directory and configuration file. 
 ```sh
-mkdir tf-lab3
+mkdir tf-lab4
 ```
 Inside the new directory create a `main.tf` file and add a resource with the following attributes:
 - type: `aws_instance`

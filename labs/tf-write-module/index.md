@@ -1,4 +1,4 @@
-# Terraform Lab 4
+# Terraform Lab 5
 
 ## Overview
 In this lab, you will create a module to manage AWS S3 buckets used to host static websites.
@@ -36,7 +36,7 @@ You also want to make sure and add the following to your ignore list. If you are
 
 Create working directory
 ```sh
-mkdir tf-lab4
+mkdir tf-lab5
 cd $_
 ```
 Clone the GitHub repository.

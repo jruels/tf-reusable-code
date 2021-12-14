@@ -1,4 +1,4 @@
-# Terraform Lab 1
+# Terraform Lab 2
 
 ## Overview 
 In this lab you will:
