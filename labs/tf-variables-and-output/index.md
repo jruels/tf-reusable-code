@@ -36,9 +36,9 @@ git clone https://github.com/jruels/tf-reusable-code.git
 
 
 ## Set the instance name with a variable
-Under our working directory create a `tf-lab1` directory and copy `main.tf` to our new directory: 
+Under our working directory create a `tf-lab2` directory and copy `main.tf` to our new directory: 
 ```sh
-mkdir tf-lab1 
+mkdir tf-lab2 
 cd $_
 cp ../tf-reusable-code/labs/tf-variables-and-output/config/main.tf main.tf
 ```
@@ -53,7 +53,7 @@ Create a new file called `variables.tf` with a block that defines a new `instanc
 variable "instance_name" {
   description    = "Name tag for EC2 instance"
   type           = string
-  default        = "Lab1-TF-example"
+  default        = "Lab2-TF-example"
 }
 ```
 
@@ -65,10 +65,10 @@ Now update the `main.tf` `aws_instance` resource block to use our new variable.
   }
 ```
 
-We also need to update the resource name in `main.tf` to `lab1-tf-example`
+We also need to update the resource name in `main.tf` to `lab2-tf-example`
 ```
 ..snip
-resource "aws_instance" "lab1-tf-example" {
+resource "aws_instance" "lab2-tf-example" {
   ami           = "ami-830c94e3"
   ..snip
 }
@@ -105,7 +105,7 @@ This output shows the execution plan, describing which actions Terraform will ta
 
 Run `terraform apply`
 
-The output has a + next to `aws_instance.lab1-tf-example`, meaning that Terraform will create this resource. Beneath that, it shows the attributes that will be set. When the value   displayed is (known after apply), it means that the value won't be known until the resource is created.
+The output has a + next to `aws_instance.lab2-tf-example`, meaning that Terraform will create this resource. Beneath that, it shows the attributes that will be set. When the value   displayed is (known after apply), it means that the value won't be known until the resource is created.
 
 Terraform will now pause and wait for your approval before proceeding. If anything in the plan seems incorrect or dangerous, it is safe to abort here with no changes made to your    infrastructure.
 
@@ -127,12 +127,12 @@ Create a file called `outputs.tf` to output the instance's ID and Public IP addr
 ```hcl
 output "instance_id" {
   description    = "ID of the EC2 instance"
-  value          = aws_instance.lab1-tf-example.id
+  value          = aws_instance.lab2-tf-example.id
 }
 
 output "instance_public_ip" {
   description   = "Public IP address of EC2 instance"
-  value       = aws_instance.lab1-tf-example.public_ip
+  value       = aws_instance.lab2-tf-example.public_ip
 }
 ```
 
