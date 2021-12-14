@@ -6,9 +6,9 @@ In this lab, you will use Terraform to deploy a web application on AWS. The infr
 Input variables make Terraform configurations more flexible by defining values that can be set by users. You will parameterize this configuration with Terraform input variables. 
 
 ## Setup lab files 
-Under our working directory create a `tf-lab2` directory:
+Under our working directory create a `tf-lab3` directory:
 ```sh
-mkdir tf-lab2 
+mkdir tf-lab3 
 cd $_
 ```
 
