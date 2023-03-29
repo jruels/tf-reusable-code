@@ -197,10 +197,10 @@ After reorganizing your environments into directories, your file structure shoul
 │   ├── terraform.tfstate
 │   └── terraform.tfvars
 └── dev
-├── main.tf
-├── variables.tf
-├── terraform.tfstate
-└── terraform.tfvars
+    ├── main.tf
+    ├── variables.tf
+    ├── terraform.tfstate
+    └── terraform.tfvars
 ```
 
 
