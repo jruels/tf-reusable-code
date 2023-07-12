@@ -1,10 +1,14 @@
 # lab setup
 
 ## Lab Setup
-In this lab you will log into the AWS Console and start a CloudShell session. We will be using this for all future labs. 
+In this lab, you will log into the AWS Console and start a CloudShell session. We will be using this for all future labs. 
 
 ### Log into the AWS Cloud Console
-Log into the [AWS Console](https://console.aws.amazon.com) in a browser. Once you have logged in, on the top right side, select the `US-East-2` region. 
+Log into the [AWS Console](https://d-916729713a.awsapps.com/start/) in a browser using the credentials from the spreadsheet.
+
+Once you have logged in, select **AWS Account (1)** -> **Account AFT** -> **Management console**
+
+On the top right side, select the **US East (Ohio)** `US-East-2` region. 
 
 ![region](images/region.png)
 
