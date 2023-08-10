@@ -340,4 +340,4 @@ terraform apply -var='resource_tags={project="my-project",environment="developme
 ```
 
 ## Cleanup
-Run `terraform destroy` to remove resources.
+Run `terraform destroy -auto-approve` to remove resources.

@@ -49,4 +49,3 @@ Now that you have created the S3 bucket and configured the `backend.tf` you must
 
 If everything is successful you should see a message telling you the backend was migrated. 
 
-

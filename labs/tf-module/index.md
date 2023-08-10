@@ -150,7 +150,7 @@ When using a new module for the first time, you must run either `terraform init`
 
 ## Cleanup
 
-Run `terraform destroy` to remove resources.
+Run `terraform destroy -auto-approve` to remove resources.
 
 
 

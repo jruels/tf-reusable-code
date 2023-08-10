@@ -41,5 +41,10 @@ Now that you've created the instances and the Terraform configuration, use the `
 
 If you get stuck check the help page `terraform import --help` or the [terraform documentation](https://www.terraform.io/docs/cli/import/usage.html)
 
+## Cleanup
+
+1. Destroy the VM instances you created through the console.
+2. Run `terraform destroy -auto-approve` to remove resources.
+
 
 

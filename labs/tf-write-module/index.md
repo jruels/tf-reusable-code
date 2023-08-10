@@ -261,4 +261,4 @@ Use the `aws s3` command to copy an index.html file to your bucket, and load it 
 You have now configured and used your own module to create a static website. 
 
 ## Cleanup
-Now clean everything up by running `terraform destroy`
+Now clean everything up by running `terraform destroy -auto-approve`
