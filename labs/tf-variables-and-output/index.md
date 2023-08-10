@@ -150,3 +150,5 @@ instance_public_ip = "54.186.202.254"
 
 You can use Terraform outputs to connect Terraform projects with other parts of your infrastructure or CICD pipelines. 
 
+## Cleanup
+Run `terraform destroy` to remove resources.

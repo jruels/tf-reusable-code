@@ -100,3 +100,5 @@ Terraform will convert the values into the correct type. The `instance_count` va
 
 Once again the variables added have the same values as the original hard-coded values. Run `terraform apply` and you'll see it does not need to make any changes.
 
+## Cleanup
+Run `terraform destroy` to remove resources.
