@@ -35,18 +35,19 @@ Your root directory contains four files and an "assets" folder. The root directo
 
 Review the `main.tf` file. The file consists of a few different resources:
 
-* The `random_pet` resource creates a string to be used as part of the unique name of your S3 bucket.
-
-* Two `aws_s3_bucket` resources designated `prod` and `dev`, which each create an S3 bucket with a read policy. Notice that the `bucket` argument defines the S3 bucket name by interpolating the environment prefix and the `random_pet` resource name.
-
-* Two `aws_s3_bucket_object` resources designated `prod` and `dev`, which load the file in the local `assets` directory using the built in file()function and upload it to your S3 buckets.
+- The `random_pet` resource creates a string to be used as part of the unique name of your S3 bucket.
+- Two `aws_s3_bucket` resources designated `prod` and `dev`, which each create an S3 bucket. Notice that the `bucket` argument defines the S3 bucket name by interpolating the environment prefix and the `random_pet` resource name.
+- Two `aws_s3_bucket_acl` resources designated `prod` and `dev`, which set a `public-read` ACL for your buckets.
+- Two `aws_s3_bucket_website_configuration` resources designated `prod` and `dev`, which configure your buckets to host websites.
+- Two `aws_s3_bucket_policy` resources designated `prod` and `dev`, which allow anyone to read the objects in the corresponding bucket.
+- Two `aws_s3_object` resources designated `prod` and `dev`, which load the file in the local `assets` directory using the [built in `file()`function](https://developer.hashicorp.com/terraform/language/functions/file) and upload it to your S3 buckets.
 
 Terraform requires unique identifiers - in this case `prod` or `dev` for each `s3` resource - to create separate resources of the same type.
 
-Open the `terraform.tfvars.example` file in your repository and edit it with your own variable definitions. Change the `region` to your nearest location in your text editor.
+Open the `terraform.tfvars.example` file in your repository and edit it with your own variable definitions. Confirm the region is `us-west-1`
 
 ```hcl
-region = "us-east-1"
+region = "us-west-1"
 prod_prefix = "prod"
 dev_prefix = "dev"
 ```
@@ -90,22 +91,27 @@ Edit the `prod.tf` file by commenting out the `terraform` block, the `provider` 
 
 ```hcl
 /*
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
+ terraform {
+   required_providers {
+     aws = {
+       source = "hashicorp/aws"
+       version = "~> 4.0.0"
+     }
+     random = {
+       source  = "hashicorp/random"
+       version = "~> 3.1.0"
+     }
+   }
+ }
 
-provider "aws" {
-  region = var.region
-}
+ provider "aws" {
+   region = var.region
+ }
 
-resource "random_pet" "petname" {
-  length    = 3
-  separator = "-"
-}
+ resource "random_pet" "petname" {
+   length    = 3
+   separator = "-"
+ }
 */
 ```
 
@@ -270,58 +276,71 @@ mv dev.tf main.tf`
 Open this file in your text editor and replace the "dev" resource IDs and variables with the function of the resource itself. You are creating a generic configuration file that can apply to multiple environments.
 
 ```hcl
-provider "aws" {
-  region = var.region
+-resource "aws_s3_bucket" "dev" {
++resource "aws_s3_bucket" "bucket" {
+-  bucket = "${var.dev_prefix}-${random_pet.petname.id}"
++  bucket = "${var.prefix}-${random_pet.petname.id}"
+
+   force_destroy = true
+ }
+
+-resource "aws_s3_bucket_website_configuration" "dev" {
++resource "aws_s3_bucket_website_configuration" "bucket" {
+-  bucket = aws_s3_bucket.dev.id
++  bucket = aws_s3_bucket.bucket.id
+
+   index_document {
+     suffix = "index.html"
+   }
+
+   error_document {
+     key = "error.html"
+   }
+ }
+
+-resource "aws_s3_bucket_acl" "dev" {
++resource "aws_s3_bucket_acl" "bucket" {
+-  bucket = aws_s3_bucket.dev.id
++  bucket = aws_s3_bucket.bucket.id
+
+  acl = "public-read"
 }
 
-resource "random_pet" "petname" {
-  length    = 3
-  separator = "-"
-}
+- resource "aws_s3_bucket_policy" "dev" {
++ resource "aws_s3_bucket_policy" "bucket" {
+-   bucket = aws_s3_bucket.dev.id
++   bucket = aws_s3_bucket.bucket.id
 
-- resource "aws_s3_bucket" "dev" {
-+ resource "aws_s3_bucket" "bucket" {
--   bucket = "${var.dev_prefix}-${random_pet.petname.id}"
-+   bucket = "${var.prefix}-${random_pet.petname.id}"
-  acl    = "public-read"
+   policy = <<EOF
+ {
+     "Version": "2012-10-17",
+     "Statement": [
+         {
+             "Sid": "PublicReadGetObject",
+             "Effect": "Allow",
+             "Principal": "*",
+             "Action": [
+                 "s3:GetObject"
+             ],
+             "Resource": [
+-                "arn:aws:s3:::${aws_s3_bucket.dev.id}/*"
++                "arn:aws:s3:::${aws_s3_bucket.bucket.id}/*"
+             ]
+         }
+     ]
+ }
+ EOF
+ }
 
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [{
-        "Sid": "PublicReadGetObject",
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": [
-            "s3:GetObject"
-        ],
-        "Resource": [
--      "arn:aws:s3:::${var.dev_prefix}-${random_pet.petname.id}/*"
-+      "arn:aws:s3:::${var.prefix}-${random_pet.petname.id}/*"
-        ]
-    }]
-}
-EOF
-
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
-
-  }
-  force_destroy = true
-}
-
-- resource "aws_s3_bucket_object" "dev" {
-+ resource "aws_s3_bucket_object" "webapp" {
-
-  acl          = "public-read"
-  key          = "index.html"
--   bucket       = aws_s3_bucket.dev.id
-+   bucket       = aws_s3_bucket.bucket.id
-  content      = file("${path.module}/assets/index.html")
-  content_type = "text/html"
-
-}
+-resource "aws_s3_object" "dev" {
++resource "aws_s3_object" "webapp" {
+   acl          = "public-read"
+   key          = "index.html"
+-  bucket       = aws_s3_bucket.dev.id
++  bucket       = aws_s3_bucket.bucket.id
+   content      = file("${path.module}/assets/index.html")
+   content_type = "text/html"
+ }
 ```
 
 Using workspaces organizes the resources in your state file by environments, so you only need one output value definition. Open your `outputs.tf` file in your text editor and remove the `dev` environment reference in the output name. Change `dev` in the value to `bucket`.
