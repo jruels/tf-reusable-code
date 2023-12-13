@@ -1,9 +1,9 @@
 # Terraform Lab 6
 
 ## Overview 
-Terraform supports several variable types including bool, string and numbers.
+Terraform supports several variable types, including bool, string, and numbers.
 
-The following steps continue with the codebase in from lab 3. The below changes should be applied in the `tf-lab3` directory.
+The following steps continue with the codebase from lab 3. The below changes should be applied in the `tf-lab3` directory.
 
 ## VPN gateway support
 
@@ -84,6 +84,16 @@ Like lists and arrays used in most programming languages, you can refer to indiv
 Use the `slice()` function to get a subset of these lists.
 
 The Terraform console command opens an interactive console that you can use to evaluate expressions in the context of your configuration. This can be very useful when working with and troubleshooting variable definitions.
+
+
+
+Initialize the directory
+
+```
+terraform init
+```
+
+
 
 Open a console with the `terraform console` command.
 
