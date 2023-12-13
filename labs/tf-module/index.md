@@ -89,7 +89,7 @@ Add the following to `variables.tf`
 - variable name: `vpc_azs`
 - description: `Availability zones for VPC`
 - type: `list(string)`
-- default: `["us-west-2a", "us-west-2b", "us-west-2c"]`
+- default: `["us-west-1a", "us-west-1b"]`
 
 - variable name: `vpc_private_subnets`
 - description: `Private subnets for VPC`

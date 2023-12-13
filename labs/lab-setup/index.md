@@ -6,9 +6,9 @@ In this lab, you will log into the AWS Console and start a CloudShell session. W
 ### Log into the AWS Cloud Console
 Log into the [AWS Console](https://d-916729713a.awsapps.com/start/) in a browser using the credentials from the spreadsheet.
 
-Once you have logged in, select **AWS Account (1)** -> **Account AFT** -> **Management console**
+Once you have logged in, select **AWS Account (1)** -> **Account (number)** -> **Management console**
 
-On the top right side, select the **US East (Ohio)** `US-East-2` region. 
+On the top right side, select the **US West (N. California)** `us-west-1` region. 
 
 ![region](images/region.png)
 
