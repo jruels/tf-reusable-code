@@ -68,7 +68,7 @@ We also need to update the resource name in `main.tf` to `lab2-tf-example`
 ```
 ..snip
 resource "aws_instance" "lab2-tf-example" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-06e4ca05d431835e9"
   ..snip
 }
 ```
