@@ -152,5 +152,11 @@ When using a new module for the first time, you must run either `terraform init`
 
 Run `terraform destroy -auto-approve` to remove resources.
 
+Remove the `.terraform` directory to free up disk space
+
+```shell
+rm -rf .terraform
+```
+
 
 

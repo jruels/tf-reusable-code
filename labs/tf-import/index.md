@@ -45,6 +45,11 @@ If you get stuck check the help page `terraform import --help` or the [terraform
 
 1. Destroy the VM instances you created through the console.
 2. Run `terraform destroy -auto-approve` to remove resources.
+3. Remove the `.terraform` directory to free up disk space
 
+   ```shell
+   rm -rf .terraform
+   ```
 
+   
 

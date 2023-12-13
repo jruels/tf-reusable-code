@@ -262,3 +262,10 @@ You have now configured and used your own module to create a static website.
 
 ## Cleanup
 Now clean everything up by running `terraform destroy -auto-approve`
+
+Remove the `.terraform` directory to free up disk space
+
+```shell
+rm -rf .terraform
+```
+
