@@ -13,8 +13,7 @@ On the top right side, select the **US West (N. California)** `us-west-1` region
 ![region](images/region.png)
 
 ### Start the CloudShell 
-After selecting the `US-East-2` region, use the search bar at the top of the page to search for `CloudShell`. Click on the result shown in the screenshot.
-![cloudshell](images/cloudshell.png)
+After selecting the `US-East-2` region, use the search bar at the top of the page to search for `CloudShell`. 
 
 ## Cleanup
 Remove any files from previous training sessions. 
