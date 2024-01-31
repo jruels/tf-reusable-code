@@ -1,10 +1,10 @@
 # Terraform Lab 7
 
 ## Overview 
-In this lab you will create an S3 bucket and migrate the Terraform state to a remote backend. 
+In this lab, you will create an S3 bucket and migrate the Terraform state to a remote backend. 
 
 ## Create an S3 bucket 
-AWS requires every S3 bucket to have a unique name. For this reason add your initials to the end of the bucket. The example below uses `jrs` as the initials.
+AWS requires every S3 bucket to have a unique name. For this reason, add your initials to the end of the bucket. The example below uses `jrs` as the initials.
 
 In the `tf-lab3/learn-terraform-variables` directory create a new file `s3.tf` with the following: 
 
